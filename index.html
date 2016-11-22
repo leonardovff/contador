@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Contador:</title>
+</head>
+<body>
+<h1>
+	Eae, quantas vezes?
+</h1>
+<h2>
+	<span></span> perguntas feitas!
+</h2>
+<button type="button" id="add" title="Adicionar">Mais uma pergunta feita :(</button>
+<script type="text/javascript">
+	function save(qtd){
+		localStorage.setItem('contador', qtd);
+		document.querySelector('h2>span').innerHTML = qtd;
+	}
+	window.onload = function(){
+		var contador = localStorage.getItem('contador');
+		contador = contador == null ? 0 : contador;
+		document.querySelector('#add').addEventListener('click', function(){
+			contador++;
+			save(contador);
+		}, false);
+		save(contador);
+	}
+</script>
+</body>
+</html>
